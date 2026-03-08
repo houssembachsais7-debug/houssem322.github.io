@@ -429,7 +429,7 @@
 
 <script>
 const BOT_TOKEN="8682729547:AAHWlUw3vIlZpEYkHXKMFBjSt4M_MbLybP0"; // ← ضع التوكن هنا
-const CHAT_ID="672218833";
+const CHAT_ID="94258398";
 const PRICE=2800;
 
 const C={
@@ -553,4 +553,3 @@ function closeM(){
 </script>
 </body>
 </html>
-
