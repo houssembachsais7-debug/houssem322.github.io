@@ -428,7 +428,7 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BOT_TOKEN="8656417748:AAEC99Uqi-fC0OI05e70HZbff_c95IUg284"; // ← ضع التوكن هنا
+const BOT_TOKEN="8682729547:AAHWlUw3vIlZpEYkHXKMFBjSt4M_MbLybP0"; // ← ضع التوكن هنا
 const CHAT_ID="672218833";
 const PRICE=2800;
 
