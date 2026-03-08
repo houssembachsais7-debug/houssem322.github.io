@@ -512,13 +512,34 @@ async function send(){
   if(!a){toast('⚠️ أدخل عنوانك');return;}
   const btn=document.getElementById('subBtn'),t=document.getElementById('btnT');
   btn.disabled=true;t.textContent='⏳ جارٍ الإرسال...';
-  const msg=`🇩🇿 *طلب جديد — قميص الخضر*\n━━━━━━━━━━━━━━\n👤 الاسم: ${n}\n📞 الهاتف: ${p}\n📍 الولاية: ${w}\n🏘️ البلدية: ${c}\n🏠 العنوان: ${a}\n👕 المقاس: ${sz}\n🔢 الكمية: ${qty}\n💰 المجموع: ${(PRICE*qty).toLocaleString()} دج\n━━━━━━━━━━━━━━\n🕐 ${new Date().toLocaleString('ar-DZ')}`;
+  const msg=`🇩🇿 طلب جديد - قميص الخضر
+الاسم: ${n}
+الهاتف: ${p}
+الولاية: ${w}
+البلدية: ${c}
+العنوان: ${a}
+المقاس: ${sz}
+الكمية: ${qty}
+المجموع: ${(PRICE*qty).toLocaleString()} دج
+التاريخ: ${new Date().toLocaleString()}`;
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
   try{
-    const r=await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:msg,parse_mode:'Markdown'})});
-    const d=await r.json();
-    if(d.ok)document.getElementById('modal').classList.add('open');
-    else toast('❌ خطأ، حاول مجدداً');
-  }catch(e){toast('❌ تحقق من الاتصال');}
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: CHAT_ID, text: msg})
+    });
+    const d = await r.json();
+    console.log('Telegram response:', JSON.stringify(d));
+    if(d.ok){
+      document.getElementById('modal').classList.add('open');
+    } else {
+      toast('❌ خطأ: ' + (d.description || 'حاول مجدداً'));
+    }
+  } catch(e){
+    console.log('Error:', e);
+    toast('❌ خطأ في الاتصال: ' + e.message);
+  }
   btn.disabled=false;t.textContent='تأكيد الطلب الآن';
 }
 
@@ -532,3 +553,4 @@ function closeM(){
 </script>
 </body>
 </html>
+
