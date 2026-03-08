@@ -428,8 +428,8 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const BOT_TOKEN="8682729547:AAHWlUw3vIlZpEYkHXKMFBjSt4M_MbLybP0"; // ← ضع التوكن هنا
-const CHAT_ID="94258398";
+const BOT_TOKEN="8247498259:AAEY6Z6i7l0Crl7XT1lbK66v-qKDJo6Z1YE"; // ← ضع التوكن هنا
+const CHAT_ID="1438554114";
 const PRICE=2800;
 
 const C={
@@ -553,3 +553,4 @@ function closeM(){
 </script>
 </body>
 </html>
+
