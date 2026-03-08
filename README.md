@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر البريق | اطلب الآن</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>قميص المنتخب الجزائري 🇩🇿</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
+    --green: #006233;
+    --green-dark: #004a26;
+    --green-light: #00853F;
+    --red: #D21034;
+    --white: #FFFFFF;
+    --off-white: #F5F5F5;
+    --dark: #0a1a0f;
+    --dark-2: #0f2015;
+    --dark-3: #162b1c;
     --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --dark: #0D0D0D;
-    --dark-2: #1A1A1A;
-    --dark-3: #252525;
-    --cream: #F5F0E8;
-    --text-muted: #888;
-    --red: #E74C3C;
+    --text-muted: #7a9e85;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,16 +25,34 @@
   body {
     font-family: 'Cairo', sans-serif;
     background: var(--dark);
-    color: var(--cream);
+    color: var(--white);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* ===== HEADER ===== */
+  /* === PITCH PATTERN BG === */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 60px,
+        rgba(0,98,51,0.07) 60px,
+        rgba(0,98,51,0.07) 120px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* === HEADER === */
   header {
-    background: var(--dark-2);
-    border-bottom: 1px solid #2a2a2a;
-    padding: 18px 40px;
+    background: rgba(0,74,38,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--red);
+    padding: 14px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,345 +62,323 @@
   }
 
   .logo {
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: var(--gold);
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
-  .logo span { color: var(--cream); }
-
-  .nav-links {
+  .logo-flag {
     display: flex;
-    gap: 30px;
-    list-style: none;
+    width: 40px;
+    height: 28px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   }
-  .nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
+  .flag-green { background: var(--green); flex: 1; }
+  .flag-white { background: white; flex: 1; position: relative; display: flex; align-items: center; justify-content: center; }
+  .flag-white::before {
+    content: '☪';
+    color: var(--red);
     font-size: 14px;
-    transition: color 0.3s;
-    font-weight: 500;
+    position: absolute;
   }
-  .nav-links a:hover { color: var(--gold); }
-
-  .cart-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 8px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-family: 'Cairo', sans-serif;
-    font-size: 14px;
-    transition: all 0.3s;
+  .logo-text {
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1px;
   }
-  .cart-btn:hover { background: var(--gold); color: var(--dark); }
+  .logo-text span { color: var(--gold); }
 
-  /* ===== HERO SECTION ===== */
+  .header-badge {
+    background: var(--red);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(210,16,52,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(210,16,52,0); }
+  }
+
+  /* === HERO === */
   .hero {
-    text-align: center;
-    padding: 60px 20px 30px;
     position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 50px 20px 30px;
     overflow: hidden;
   }
-
   .hero::before {
     content: '';
     position: absolute;
-    top: -100px;
+    top: -50%;
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,133,63,0.15) 0%, transparent 65%);
     pointer-events: none;
   }
 
-  .hero-label {
-    display: inline-block;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold);
-    padding: 6px 20px;
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(210,16,52,0.15);
+    border: 1px solid rgba(210,16,52,0.4);
+    color: #ff6b6b;
+    padding: 6px 18px;
     border-radius: 30px;
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 2px;
     margin-bottom: 20px;
-    animation: fadeDown 0.6s ease both;
+    animation: fadeDown 0.5s ease both;
   }
 
   .hero h1 {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(28px, 5vw, 52px);
     font-weight: 900;
     line-height: 1.2;
-    margin-bottom: 15px;
-    animation: fadeDown 0.7s ease 0.1s both;
+    margin-bottom: 12px;
+    animation: fadeDown 0.6s ease 0.1s both;
   }
-  .hero h1 em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
+  .hero h1 .dz { color: var(--gold); }
   .hero p {
     color: var(--text-muted);
-    font-size: 16px;
-    max-width: 500px;
-    margin: 0 auto 40px;
-    line-height: 1.7;
-    animation: fadeDown 0.7s ease 0.2s both;
+    font-size: 15px;
+    animation: fadeDown 0.6s ease 0.2s both;
   }
 
-  /* ===== PRODUCTS GRID ===== */
-  .section-title {
-    text-align: center;
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--cream);
-  }
-  .section-sub {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 40px;
-  }
-
-  .products-section {
+  /* === MAIN LAYOUT === */
+  .main-layout {
+    position: relative;
+    z-index: 1;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px 20px 60px;
-  }
-
-  .products-grid {
+    padding: 20px 20px 80px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-bottom: 60px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
   }
 
-  .product-card {
-    background: var(--dark-2);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid #2a2a2a;
-    cursor: pointer;
-    transition: all 0.35s ease;
+  /* === PRODUCT GALLERY === */
+  .gallery-section {
+    position: sticky;
+    top: 90px;
+  }
+
+  .main-img-wrap {
     position: relative;
-    animation: fadeUp 0.5s ease both;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f2a18, #1a4a28);
+    border: 2px solid rgba(0,133,63,0.3);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    margin-bottom: 12px;
+    aspect-ratio: 3/4;
+    cursor: zoom-in;
   }
-  .product-card:nth-child(1) { animation-delay: 0.1s; }
-  .product-card:nth-child(2) { animation-delay: 0.2s; }
-  .product-card:nth-child(3) { animation-delay: 0.3s; }
-  .product-card:nth-child(4) { animation-delay: 0.4s; }
-
-  .product-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.2);
+  .main-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
   }
+  .main-img-wrap:hover img { transform: scale(1.04); }
 
-  .product-card.selected {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 2px var(--gold), 0 20px 40px rgba(201,168,76,0.1);
-  }
-
-  .product-badge {
+  .img-overlay {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .img-badges {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .img-badge {
     background: var(--red);
     color: white;
     font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
+    font-weight: 800;
+    padding: 5px 12px;
     border-radius: 20px;
-    z-index: 2;
+    text-align: center;
   }
+  .img-badge.green { background: var(--green); }
 
-  .product-badge.new { background: #27AE60; }
-
-  .product-img-wrap {
+  .thumb-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .thumb {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    aspect-ratio: 1;
+    background: var(--dark-3);
+  }
+  .thumb img {
     width: 100%;
-    height: 200px;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .thumb:hover img { transform: scale(1.08); }
+  .thumb.active { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+  /* PRODUCT INFO CARD */
+  .product-info-card {
+    background: rgba(15,32,21,0.8);
+    border: 1px solid rgba(0,133,63,0.25);
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin-top: 14px;
+  }
+  .rating-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 80px;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+  .rating-count { color: var(--text-muted); font-size: 12px; }
+  .product-title { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+  .product-sub { color: var(--text-muted); font-size: 13px; }
+
+  /* === ORDER FORM === */
+  .order-card {
+    background: rgba(15,32,21,0.9);
+    border: 1px solid rgba(0,133,63,0.25);
+    border-radius: 24px;
+    padding: 32px;
     position: relative;
     overflow: hidden;
+    animation: fadeUp 0.6s ease 0.3s both;
   }
-
-  /* Stylized SVG product backgrounds */
-  .product-img-wrap.p1 { background: linear-gradient(135deg, #1a1230, #2d1b69); }
-  .product-img-wrap.p2 { background: linear-gradient(135deg, #0d2137, #1a4a6b); }
-  .product-img-wrap.p3 { background: linear-gradient(135deg, #1a0d0d, #6b1a1a); }
-  .product-img-wrap.p4 { background: linear-gradient(135deg, #0d1a0d, #1a5c1a); }
-
-  .product-img-wrap svg {
-    width: 100px;
-    height: 100px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-    transition: transform 0.3s ease;
-  }
-  .product-card:hover .product-img-wrap svg {
-    transform: scale(1.08) rotate(-3deg);
-  }
-
-  .selected-check {
+  .order-card::before {
+    content: '';
     position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 28px;
-    height: 28px;
-    background: var(--gold);
-    border-radius: 50%;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--white), var(--red));
+  }
+
+  /* Price Block */
+  .price-block {
     display: flex;
     align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s;
-    z-index: 2;
+    justify-content: space-between;
+    background: var(--dark-3);
+    border-radius: 14px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0,133,63,0.2);
   }
-  .product-card.selected .selected-check {
-    opacity: 1;
-    transform: scale(1);
+  .price-main {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
   }
-  .selected-check svg { width: 14px; height: 14px; }
-
-  .product-info {
-    padding: 16px;
-  }
-  .product-name {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: var(--cream);
-  }
-  .product-desc {
-    font-size: 12px;
+  .price-main span { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+  .price-old {
+    font-size: 16px;
     color: var(--text-muted);
-    margin-bottom: 12px;
-    line-height: 1.5;
+    text-decoration: line-through;
+    margin-bottom: 2px;
   }
-  .product-footer {
+  .price-save {
+    font-size: 12px;
+    color: #4ade80;
+    font-weight: 700;
+  }
+
+  /* Size Selector */
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .product-price {
-    font-size: 18px;
-    font-weight: 900;
+  .size-guide {
     color: var(--gold);
-  }
-  .product-price span {
     font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 400;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
   }
-  .stars { color: var(--gold); font-size: 12px; }
-
-  /* ===== ORDER FORM ===== */
-  .order-section {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
+  .size-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 22px;
   }
-
-  .form-card {
-    background: var(--dark-2);
-    border: 1px solid #2a2a2a;
-    border-radius: 24px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .form-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-  }
-
-  .form-header {
-    margin-bottom: 30px;
-  }
-  .form-header h2 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .form-header p {
-    color: var(--text-muted);
-    font-size: 14px;
-  }
-
-  .selected-product-preview {
+  .size-btn {
     background: var(--dark-3);
-    border: 1px solid rgba(201,168,76,0.2);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    border: 1.5px solid rgba(0,133,63,0.3);
+    border-radius: 8px;
+    padding: 10px 4px;
+    color: var(--white);
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
   }
-  .preview-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .preview-icon.p1 { background: linear-gradient(135deg, #1a1230, #2d1b69); }
-  .preview-icon.p2 { background: linear-gradient(135deg, #0d2137, #1a4a6b); }
-  .preview-icon.p3 { background: linear-gradient(135deg, #1a0d0d, #6b1a1a); }
-  .preview-icon.p4 { background: linear-gradient(135deg, #0d1a0d, #1a5c1a); }
-  .preview-icon svg { width: 32px; height: 32px; }
-  .preview-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-  .preview-text p { font-size: 13px; color: var(--text-muted); }
-  .preview-price {
-    margin-right: auto;
-    font-size: 20px;
-    font-weight: 900;
-    color: var(--gold);
+  .size-btn:hover { border-color: var(--green-light); background: rgba(0,133,63,0.15); }
+  .size-btn.selected {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+    box-shadow: 0 4px 14px rgba(0,133,63,0.4);
   }
 
+  /* Form Fields */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 14px;
+    margin-bottom: 16px;
   }
   .form-grid .full { grid-column: 1 / -1; }
 
-  .form-group {
+  .fgroup {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
   }
-  .form-group label {
-    font-size: 13px;
-    font-weight: 600;
+  .fgroup label {
+    font-size: 12px;
+    font-weight: 700;
     color: var(--text-muted);
     letter-spacing: 0.5px;
   }
-  .form-group input,
-  .form-group select {
+  .fgroup input,
+  .fgroup select {
     background: var(--dark-3);
-    border: 1px solid #333;
+    border: 1.5px solid rgba(0,133,63,0.25);
     border-radius: 10px;
-    padding: 13px 16px;
-    color: var(--cream);
+    padding: 12px 14px;
+    color: var(--white);
     font-family: 'Cairo', sans-serif;
     font-size: 14px;
     outline: none;
@@ -388,198 +387,213 @@
     appearance: none;
     -webkit-appearance: none;
   }
-  .form-group input::placeholder { color: #555; }
-  .form-group input:focus,
-  .form-group select:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+  .fgroup input::placeholder { color: #3a6a4a; }
+  .fgroup input:focus,
+  .fgroup select:focus {
+    border-color: var(--green-light);
+    box-shadow: 0 0 0 3px rgba(0,133,63,0.15);
   }
-
-  .select-wrapper {
-    position: relative;
-  }
-  .select-wrapper::after {
+  .select-wrap { position: relative; }
+  .select-wrap::after {
     content: '▾';
     position: absolute;
-    left: 14px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--gold);
+    color: var(--green-light);
     pointer-events: none;
-    font-size: 14px;
   }
 
-  .qty-control {
+  /* Quantity */
+  .qty-row {
     display: flex;
     align-items: center;
     gap: 0;
     background: var(--dark-3);
-    border: 1px solid #333;
+    border: 1.5px solid rgba(0,133,63,0.25);
     border-radius: 10px;
     overflow: hidden;
+    height: 46px;
   }
   .qty-btn {
-    width: 44px;
-    height: 44px;
-    background: transparent;
+    width: 46px;
+    height: 100%;
+    background: rgba(0,133,63,0.15);
     border: none;
-    color: var(--gold);
-    font-size: 20px;
+    color: var(--green-light);
+    font-size: 22px;
     cursor: pointer;
     transition: background 0.2s;
+    font-family: 'Cairo', sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cairo', sans-serif;
   }
-  .qty-btn:hover { background: rgba(201,168,76,0.1); }
-  .qty-value {
+  .qty-btn:hover { background: rgba(0,133,63,0.3); }
+  .qty-val {
     flex: 1;
     text-align: center;
     font-size: 16px;
-    font-weight: 700;
-    color: var(--cream);
+    font-weight: 800;
+    color: white;
   }
 
-  .summary-box {
+  /* Summary */
+  .summary {
     background: var(--dark-3);
     border-radius: 12px;
-    padding: 18px;
-    margin: 24px 0;
+    padding: 16px;
+    margin: 20px 0;
+    border: 1px solid rgba(0,133,63,0.15);
   }
-  .summary-row {
+  .sum-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-muted);
+    padding: 5px 0;
   }
-  .summary-row.total {
-    color: var(--cream);
-    font-size: 18px;
-    font-weight: 700;
-    border-top: 1px solid #333;
+  .sum-row.total {
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    border-top: 1px solid rgba(0,133,63,0.2);
     margin-top: 8px;
-    padding-top: 14px;
+    padding-top: 12px;
   }
-  .summary-row.total .amount { color: var(--gold); }
+  .sum-row.total .tot-val { color: var(--gold); }
 
+  /* Submit Button */
   .submit-btn {
     width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    padding: 17px;
+    background: linear-gradient(135deg, var(--green), var(--green-light));
     border: none;
     border-radius: 12px;
-    color: var(--dark);
+    color: white;
     font-family: 'Cairo', sans-serif;
     font-size: 17px;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    position: relative;
-    overflow: hidden;
+    letter-spacing: 0.5px;
   }
   .submit-btn::before {
     content: '';
     position: absolute;
     top: 0; left: -100%;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
     transition: left 0.5s;
   }
   .submit-btn:hover::before { left: 100%; }
-  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.3); }
-  .submit-btn:active { transform: translateY(0); }
+  .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,133,63,0.4); }
+  .submit-btn.loading { opacity: 0.7; cursor: not-allowed; }
 
-  .trust-badges {
+  /* Trust */
+  .trust-row {
     display: flex;
     justify-content: center;
-    gap: 24px;
-    margin-top: 20px;
+    gap: 20px;
+    margin-top: 18px;
+    flex-wrap: wrap;
   }
-  .trust-badge {
+  .trust-item {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12px;
+    gap: 5px;
+    font-size: 11px;
     color: var(--text-muted);
   }
-  .trust-badge svg { width: 16px; height: 16px; color: var(--gold); }
+  .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-light); }
 
-  /* ===== SUCCESS MODAL ===== */
-  .modal-overlay {
+  /* === MODAL === */
+  .modal-bg {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
     z-index: 999;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
   }
-  .modal-overlay.show { display: flex; }
+  .modal-bg.open { display: flex; }
   .modal {
     background: var(--dark-2);
-    border: 1px solid rgba(201,168,76,0.3);
+    border: 1px solid rgba(0,133,63,0.4);
+    border-top: 4px solid var(--green);
     border-radius: 24px;
-    padding: 50px 40px;
-    max-width: 440px;
+    padding: 48px 36px;
+    max-width: 420px;
     width: 90%;
     text-align: center;
-    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
   }
   .modal-icon {
     width: 80px;
     height: 80px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    background: linear-gradient(135deg, var(--green), var(--green-light));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 24px;
+    margin: 0 auto 22px;
+    font-size: 36px;
   }
-  .modal-icon svg { width: 40px; height: 40px; color: var(--dark); }
-  .modal h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
-  .modal p { color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 28px; }
+  .modal h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; }
+  .modal p { color: var(--text-muted); line-height: 1.7; font-size: 14px; margin-bottom: 26px; }
   .modal-close {
-    background: var(--gold);
+    background: var(--green);
     border: none;
     border-radius: 10px;
-    padding: 14px 40px;
-    color: var(--dark);
+    padding: 13px 36px;
+    color: white;
     font-family: 'Cairo', sans-serif;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s;
   }
+  .modal-close:hover { background: var(--green-light); transform: translateY(-1px); }
 
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* Error toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--red);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 999;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    white-space: nowrap;
   }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes popIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 600px) {
-    header { padding: 14px 20px; }
-    .nav-links { display: none; }
-    .form-card { padding: 24px 20px; }
-    .form-grid { grid-template-columns: 1fr; }
-    .form-grid .full { grid-column: 1; }
-    .trust-badges { flex-wrap: wrap; gap: 12px; }
+  /* ANIMATIONS */
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes popIn { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+
+  /* RESPONSIVE */
+  @media(max-width:768px){
+    .main-layout { grid-template-columns:1fr; }
+    .gallery-section { position:static; }
+    .order-card { padding:24px 18px; }
+    .form-grid { grid-template-columns:1fr; }
+    .form-grid .full { grid-column:1; }
+    .logo-text { font-size:15px; }
   }
 </style>
 </head>
@@ -587,340 +601,412 @@
 
 <!-- HEADER -->
 <header>
-  <div class="logo">✦ <span>البريق</span> STORE</div>
-  <ul class="nav-links">
-    <li><a href="#">الرئيسية</a></li>
-    <li><a href="#">المنتجات</a></li>
-    <li><a href="#">التوصيل</a></li>
-    <li><a href="#">اتصل بنا</a></li>
-  </ul>
-  <button class="cart-btn">🛒 السلة</button>
+  <div class="logo">
+    <div class="logo-flag">
+      <div class="flag-green"></div>
+      <div class="flag-white"></div>
+      <div class="flag-green"></div>
+    </div>
+    <div class="logo-text">الخضر <span>STORE</span></div>
+  </div>
+  <div class="header-badge">🔴 متوفر الآن</div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-label">🔥 عروض حصرية - توصيل لكل ولايات الجزائر</div>
-  <h1>اختر منتجك <em>المميز</em><br>واطلبه الآن</h1>
-  <p>تشكيلة راقية من أفضل المنتجات بأسعار لا تُنافَس، مع ضمان التوصيل السريع لباب منزلك</p>
+  <div class="hero-tag">🏆 المنتخب الوطني الجزائري 🇩🇿</div>
+  <h1>قميص <span class="dz">الخضر</span> الرسمي<br>الإصدار الجديد 2025</h1>
+  <p>ارتدِ ألوان الجزائر — قميص أصلي عالي الجودة مع توصيل لجميع الولايات</p>
 </section>
 
-<!-- PRODUCTS -->
-<section class="products-section">
-  <p class="section-title">منتجاتنا المميزة</p>
-  <p class="section-sub">اضغط على المنتج لاختياره</p>
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
 
-  <div class="products-grid" id="productsGrid">
-
-    <!-- PRODUCT 1: Watch -->
-    <div class="product-card" onclick="selectProduct(this, 0)" data-price="4500" data-name="ساعة كلاسيك فاخرة" data-class="p1">
-      <div class="product-badge">-30%</div>
-      <div class="selected-check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div class="product-img-wrap p1">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="35" y="10" width="30" height="8" rx="3" fill="#C9A84C"/>
-          <rect x="35" y="82" width="30" height="8" rx="3" fill="#C9A84C"/>
-          <circle cx="50" cy="50" r="28" fill="#1a1230" stroke="#C9A84C" stroke-width="3"/>
-          <circle cx="50" cy="50" r="22" fill="#0d0a20"/>
-          <circle cx="50" cy="50" r="3" fill="#C9A84C"/>
-          <line x1="50" y1="50" x2="50" y2="34" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-          <line x1="50" y1="50" x2="62" y2="55" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="50" cy="30" r="2" fill="#C9A84C" opacity="0.6"/>
-          <circle cx="50" cy="70" r="2" fill="#C9A84C" opacity="0.6"/>
-          <circle cx="30" cy="50" r="2" fill="#C9A84C" opacity="0.6"/>
-          <circle cx="70" cy="50" r="2" fill="#C9A84C" opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">ساعة كلاسيك فاخرة</div>
-        <div class="product-desc">ساعة يد أنيقة بإطار ذهبي وزجاج كريستال مقاوم للخدش</div>
-        <div class="product-footer">
-          <div class="product-price">4,500 <span>دج</span></div>
-          <div class="stars">★★★★★</div>
-        </div>
+  <!-- LEFT: GALLERY -->
+  <div class="gallery-section" style="animation: fadeUp 0.5s ease 0.1s both;">
+    <div class="main-img-wrap" id="mainImgWrap">
+      <img src="36906.png" alt="قميص المنتخب الجزائري" id="mainImg">
+      <div class="img-overlay"></div>
+      <div class="img-badges">
+        <div class="img-badge">🔥 إصدار 2025</div>
+        <div class="img-badge green">✓ أصلي 100%</div>
       </div>
     </div>
 
-    <!-- PRODUCT 2: Perfume -->
-    <div class="product-card" onclick="selectProduct(this, 1)" data-price="2800" data-name="عطر أوريانت" data-class="p2">
-      <div class="product-badge new">جديد</div>
-      <div class="selected-check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="thumb-row">
+      <div class="thumb active" onclick="switchImg('36906.png', this)">
+        <img src="36906.png" alt="الواجهة الأمامية">
       </div>
-      <div class="product-img-wrap p2">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="42" y="15" width="16" height="8" rx="2" fill="#C9A84C"/>
-          <rect x="46" y="10" width="8" height="8" rx="1" fill="#E8C97A"/>
-          <rect x="30" y="38" width="40" height="50" rx="8" fill="#0d2137" stroke="#C9A84C" stroke-width="1.5"/>
-          <rect x="34" y="23" width="32" height="16" rx="4" fill="#1a4a6b" stroke="#C9A84C" stroke-width="1"/>
-          <rect x="36" y="50" width="28" height="2" rx="1" fill="#C9A84C" opacity="0.3"/>
-          <text x="50" y="72" text-anchor="middle" fill="#C9A84C" font-size="7" font-family="serif" font-style="italic">Orient</text>
-          <ellipse cx="50" cy="80" rx="10" ry="3" fill="#C9A84C" opacity="0.2"/>
-          <circle cx="50" cy="30" r="3" fill="#E8C97A"/>
-        </svg>
+      <div class="thumb" onclick="switchImg('36902.jpg', this)">
+        <img src="36902.jpg" alt="الواجهة الخلفية">
       </div>
-      <div class="product-info">
-        <div class="product-name">عطر أوريانت الملكي</div>
-        <div class="product-desc">عطر شرقي فاخر بمزيج من العود والمسك يدوم طوال اليوم</div>
-        <div class="product-footer">
-          <div class="product-price">2,800 <span>دج</span></div>
-          <div class="stars">★★★★☆</div>
-        </div>
+      <div class="thumb" onclick="switchImg('36939.jpg', this)">
+        <img src="36939.jpg" alt="طريقة اللبس">
       </div>
     </div>
 
-    <!-- PRODUCT 3: Bag -->
-    <div class="product-card" onclick="selectProduct(this, 2)" data-price="5200" data-name="حقيبة جلد طبيعي" data-class="p3">
-      <div class="selected-check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="product-info-card">
+      <div class="rating-row">
+        <div class="stars">★★★★★</div>
+        <div class="rating-count">(248 تقييم)</div>
       </div>
-      <div class="product-img-wrap p3">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M36 35 Q36 24 50 24 Q64 24 64 35" stroke="#C9A84C" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <rect x="22" y="35" width="56" height="45" rx="8" fill="#6b1a1a" stroke="#C9A84C" stroke-width="1.5"/>
-          <rect x="22" y="35" width="56" height="12" rx="6" fill="#5a1515" stroke="#C9A84C" stroke-width="1"/>
-          <rect x="38" y="53" width="24" height="16" rx="4" fill="#3a0f0f" stroke="#C9A84C" stroke-width="1"/>
-          <circle cx="50" cy="61" r="3" fill="#C9A84C"/>
-          <line x1="44" y1="41" x2="56" y2="41" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">حقيبة جلد طبيعي</div>
-        <div class="product-desc">حقيبة يد نسائية من الجلد الأصلي بتصميم عصري وأنيق</div>
-        <div class="product-footer">
-          <div class="product-price">5,200 <span>دج</span></div>
-          <div class="stars">★★★★★</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRODUCT 4: Glasses -->
-    <div class="product-card" onclick="selectProduct(this, 3)" data-price="1900" data-name="نظارة شمسية برميوم" data-class="p4">
-      <div class="product-badge">-20%</div>
-      <div class="selected-check">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div class="product-img-wrap p4">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="10" y1="50" x2="22" y2="50" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
-          <line x1="78" y1="50" x2="90" y2="50" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="32" cy="50" r="16" fill="#0d1a0d" stroke="#C9A84C" stroke-width="2.5"/>
-          <circle cx="68" cy="50" r="16" fill="#0d1a0d" stroke="#C9A84C" stroke-width="2.5"/>
-          <line x1="48" y1="50" x2="52" y2="50" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="32" cy="50" r="10" fill="rgba(26,92,26,0.4)"/>
-          <circle cx="68" cy="50" r="10" fill="rgba(26,92,26,0.4)"/>
-          <circle cx="27" cy="45" r="3" fill="rgba(255,255,255,0.15)"/>
-          <circle cx="63" cy="45" r="3" fill="rgba(255,255,255,0.15)"/>
-        </svg>
-      </div>
-      <div class="product-info">
-        <div class="product-name">نظارة شمسية برميوم</div>
-        <div class="product-desc">نظارة شمسية بعدسات مستقطبة UV400 وإطار معدني خفيف</div>
-        <div class="product-footer">
-          <div class="product-price">1,900 <span>دج</span></div>
-          <div class="stars">★★★★☆</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ORDER FORM -->
-  <div class="order-section">
-    <div class="form-card">
-      <div class="form-header">
-        <h2>🛒 أكمل طلبك</h2>
-        <p>أدخل بياناتك وسنتصل بك لتأكيد الطلب خلال 24 ساعة</p>
-      </div>
-
-      <!-- Selected Product Preview -->
-      <div class="selected-product-preview" id="productPreview">
-        <div class="preview-icon p1" id="previewIcon">
-          <svg viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="28" fill="#1a1230" stroke="#C9A84C" stroke-width="3"/>
-            <circle cx="50" cy="50" r="22" fill="#0d0a20"/>
-            <circle cx="50" cy="50" r="3" fill="#C9A84C"/>
-            <line x1="50" y1="50" x2="50" y2="34" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="preview-text">
-          <h4 id="previewName">ساعة كلاسيك فاخرة</h4>
-          <p>✅ متوفر - توصيل 3-5 أيام</p>
-        </div>
-        <div class="preview-price" id="previewPrice">4,500 دج</div>
-      </div>
-
-      <div class="form-grid">
-        <div class="form-group">
-          <label>الاسم الكامل</label>
-          <input type="text" id="nameInput" placeholder="مثال: أحمد بن علي">
-        </div>
-        <div class="form-group">
-          <label>رقم الهاتف</label>
-          <input type="tel" id="phoneInput" placeholder="0550 123 456">
-        </div>
-        <div class="form-group full">
-          <label>الولاية</label>
-          <div class="select-wrapper">
-            <select id="stateSelect">
-              <option value="">اختر ولايتك</option>
-              <option>الجزائر</option><option>البليدة</option><option>وهران</option>
-              <option>قسنطينة</option><option>سطيف</option><option>عنابة</option>
-              <option>باتنة</option><option>تلمسان</option><option>بجاية</option>
-              <option>تيزي وزو</option><option>مستغانم</option><option>سكيكدة</option>
-              <option>الشلف</option><option>تبسة</option><option>بسكرة</option>
-              <option>ورقلة</option><option>أدرار</option><option>تمنراست</option>
-              <option>إليزي</option><option>أم البواقي</option><option>خنشلة</option>
-              <option>سوق أهراس</option><option>جيجل</option><option>ميلة</option>
-              <option>برج بوعريريج</option><option>المسيلة</option><option>المدية</option>
-              <option>تيسمسيلت</option><option>البويرة</option><option>بومرداس</option>
-              <option>بوعلام</option><option>النعامة</option><option>سعيدة</option>
-              <option>معسكر</option><option>البيض</option><option>تيارت</option>
-              <option>غليزان</option><option>الأغواط</option><option>الجلفة</option>
-              <option>غرداية</option><option>الوادي</option><option>توقرت</option>
-              <option>بريكة</option><option>عين الدفلى</option><option>عين تموشنت</option>
-              <option>خميستي</option><option>عين ولمان</option><option>برج باجي مختار</option>
-              <option>أولاد جلال</option><option>تيميمون</option><option>ورقلة</option>
-              <option>إن صالح</option><option>إن قزام</option><option>توقرت</option>
-              <option>جانت</option><option>المغير</option><option>المنيعة</option>
-              <option>تندوف</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group full">
-          <label>العنوان التفصيلي</label>
-          <input type="text" id="addressInput" placeholder="الحي، الشارع، رقم المبنى...">
-        </div>
-        <div class="form-group">
-          <label>الكمية</label>
-          <div class="qty-control">
-            <button class="qty-btn" onclick="changeQty(-1)">−</button>
-            <div class="qty-value" id="qtyDisplay">1</div>
-            <button class="qty-btn" onclick="changeQty(1)">+</button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>طريقة الدفع</label>
-          <div class="select-wrapper">
-            <select>
-              <option>💵 الدفع عند الاستلام</option>
-              <option>🏦 تحويل بنكي</option>
-              <option>📱 بريدي موب</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="summary-box">
-        <div class="summary-row"><span>سعر المنتج</span><span id="summaryPrice">4,500 دج</span></div>
-        <div class="summary-row"><span>الكمية</span><span id="summaryQty">× 1</span></div>
-        <div class="summary-row"><span>رسوم التوصيل</span><span>مجاني 🎉</span></div>
-        <div class="summary-row total"><span>المجموع</span><span class="amount" id="summaryTotal">4,500 دج</span></div>
-      </div>
-
-      <button class="submit-btn" onclick="submitOrder()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-        تأكيد الطلب الآن
-      </button>
-
-      <div class="trust-badges">
-        <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          دفع آمن
-        </div>
-        <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          توصيل سريع
-        </div>
-        <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 4.28 4.18 2 2 0 0 1 6.27 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L10.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 24 16.92z"/></svg>
-          دعم 24/7
-        </div>
-        <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.02"/></svg>
-          إرجاع مجاني
-        </div>
-      </div>
+      <div class="product-title">قميص المنتخب الجزائري الرسمي</div>
+      <div class="product-sub">Adidas ClimaCool — نسيج تنفسي فائق الجودة</div>
     </div>
   </div>
-</section>
+
+  <!-- RIGHT: ORDER FORM -->
+  <div class="order-card">
+
+    <!-- Price -->
+    <div class="price-block">
+      <div>
+        <div class="price-old">3,500 دج</div>
+        <div class="price-save">💚 وفّر 700 دج</div>
+      </div>
+      <div class="price-main">2,800 <span>دج</span></div>
+    </div>
+
+    <!-- Size -->
+    <div class="section-label">
+      <span>المقاس</span>
+      <span class="size-guide">جدول المقاسات ↗</span>
+    </div>
+    <div class="size-grid" id="sizeGrid">
+      <button class="size-btn" onclick="selectSize(this)">S</button>
+      <button class="size-btn" onclick="selectSize(this)">M</button>
+      <button class="size-btn selected" onclick="selectSize(this)">L</button>
+      <button class="size-btn" onclick="selectSize(this)">XL</button>
+      <button class="size-btn" onclick="selectSize(this)">XXL</button>
+    </div>
+
+    <!-- Form -->
+    <div class="form-grid">
+      <div class="fgroup">
+        <label>الاسم الكامل</label>
+        <input type="text" id="name" placeholder="مثال: أحمد بن علي">
+      </div>
+      <div class="fgroup">
+        <label>رقم الهاتف</label>
+        <input type="tel" id="phone" placeholder="0550 123 456">
+      </div>
+
+      <div class="fgroup full">
+        <label>الولاية</label>
+        <div class="select-wrap">
+          <select id="wilaya" onchange="loadCommunes()">
+            <option value="">اختر الولاية</option>
+            <option value="الجزائر">الجزائر</option>
+            <option value="البليدة">البليدة</option>
+            <option value="وهران">وهران</option>
+            <option value="قسنطينة">قسنطينة</option>
+            <option value="سطيف">سطيف</option>
+            <option value="عنابة">عنابة</option>
+            <option value="باتنة">باتنة</option>
+            <option value="تلمسان">تلمسان</option>
+            <option value="بجاية">بجاية</option>
+            <option value="تيزي وزو">تيزي وزو</option>
+            <option value="مستغانم">مستغانم</option>
+            <option value="سكيكدة">سكيكدة</option>
+            <option value="الشلف">الشلف</option>
+            <option value="تبسة">تبسة</option>
+            <option value="بسكرة">بسكرة</option>
+            <option value="ورقلة">ورقلة</option>
+            <option value="أدرار">أدرار</option>
+            <option value="تمنراست">تمنراست</option>
+            <option value="أم البواقي">أم البواقي</option>
+            <option value="خنشلة">خنشلة</option>
+            <option value="سوق أهراس">سوق أهراس</option>
+            <option value="جيجل">جيجل</option>
+            <option value="ميلة">ميلة</option>
+            <option value="برج بوعريريج">برج بوعريريج</option>
+            <option value="المسيلة">المسيلة</option>
+            <option value="المدية">المدية</option>
+            <option value="تيسمسيلت">تيسمسيلت</option>
+            <option value="البويرة">البويرة</option>
+            <option value="بومرداس">بومرداس</option>
+            <option value="تيبازة">تيبازة</option>
+            <option value="عين الدفلى">عين الدفلى</option>
+            <option value="عين تموشنت">عين تموشنت</option>
+            <option value="تيارت">تيارت</option>
+            <option value="معسكر">معسكر</option>
+            <option value="سعيدة">سعيدة</option>
+            <option value="غليزان">غليزان</option>
+            <option value="الأغواط">الأغواط</option>
+            <option value="الجلفة">الجلفة</option>
+            <option value="غرداية">غرداية</option>
+            <option value="الوادي">الوادي</option>
+            <option value="النعامة">النعامة</option>
+            <option value="البيض">البيض</option>
+            <option value="إليزي">إليزي</option>
+            <option value="تندوف">تندوف</option>
+            <option value="بشار">بشار</option>
+            <option value="خميستي">خميستي</option>
+            <option value="تيبيازة">تيبيازة</option>
+            <option value="برج باجي مختار">برج باجي مختار</option>
+            <option value="أولاد جلال">أولاد جلال</option>
+            <option value="تيميمون">تيميمون</option>
+            <option value="توقرت">توقرت</option>
+            <option value="إن صالح">إن صالح</option>
+            <option value="إن قزام">إن قزام</option>
+            <option value="جانت">جانت</option>
+            <option value="المغير">المغير</option>
+            <option value="المنيعة">المنيعة</option>
+            <option value="بني عباس">بني عباس</option>
+            <option value="عين قزام">عين قزام</option>
+            <option value="بريكة">بريكة</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fgroup full">
+        <label>البلدية</label>
+        <div class="select-wrap">
+          <select id="commune">
+            <option value="">اختر الولاية أولاً</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fgroup full">
+        <label>العنوان التفصيلي</label>
+        <input type="text" id="address" placeholder="الحي، الشارع، رقم المبنى...">
+      </div>
+
+      <div class="fgroup">
+        <label>الكمية</label>
+        <div class="qty-row">
+          <button class="qty-btn" onclick="chQty(-1)">−</button>
+          <div class="qty-val" id="qtyVal">1</div>
+          <button class="qty-btn" onclick="chQty(1)">+</button>
+        </div>
+      </div>
+
+      <div class="fgroup">
+        <label>طريقة الدفع</label>
+        <div class="select-wrap">
+          <select>
+            <option>💵 عند الاستلام</option>
+            <option>📱 بريدي موب</option>
+            <option>🏦 تحويل بنكي</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+      <div class="sum-row"><span>سعر القميص</span><span>2,800 دج</span></div>
+      <div class="sum-row"><span>الكمية</span><span id="sumQty">× 1</span></div>
+      <div class="sum-row"><span>رسوم التوصيل</span><span style="color:#4ade80">مجاني 🎉</span></div>
+      <div class="sum-row total"><span>المجموع</span><span class="tot-val" id="sumTotal">2,800 دج</span></div>
+    </div>
+
+    <!-- Submit -->
+    <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
+      <span>🛒</span>
+      <span id="btnText">تأكيد الطلب الآن</span>
+    </button>
+
+    <div class="trust-row">
+      <div class="trust-item"><div class="trust-dot"></div> توصيل لكل الجزائر</div>
+      <div class="trust-item"><div class="trust-dot"></div> ضمان الجودة</div>
+      <div class="trust-item"><div class="trust-dot"></div> دفع آمن عند الاستلام</div>
+    </div>
+  </div>
+
+</div>
 
 <!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="successModal">
+<div class="modal-bg" id="modal">
   <div class="modal">
-    <div class="modal-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2>تم تأكيد طلبك! 🎉</h2>
-    <p>شكراً لك! سيتصل بك أحد موظفينا خلال ساعات قليلة لتأكيد طلبك وتحديد موعد التوصيل.</p>
-    <button class="modal-close" onclick="closeModal()">عودة للمتجر</button>
+    <div class="modal-icon">✅</div>
+    <h2>تم استلام طلبك! 🇩🇿</h2>
+    <p>شكراً لك على ثقتك! سيتصل بك أحد موظفينا خلال 24 ساعة لتأكيد الطلب وتحديد موعد التوصيل.</p>
+    <button class="modal-close" onclick="closeModal()">العودة للمتجر</button>
   </div>
 </div>
 
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
 <script>
-  const products = [
-    { name: "ساعة كلاسيك فاخرة", price: 4500, cls: "p1", svg: `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="28" fill="#1a1230" stroke="#C9A84C" stroke-width="3"/><circle cx="50" cy="50" r="22" fill="#0d0a20"/><circle cx="50" cy="50" r="3" fill="#C9A84C"/><line x1="50" y1="50" x2="50" y2="34" stroke="#C9A84C" stroke-width="2" stroke-linecap="round"/><line x1="50" y1="50" x2="62" y2="55" stroke="#E8C97A" stroke-width="1.5" stroke-linecap="round"/></svg>` },
-    { name: "عطر أوريانت الملكي", price: 2800, cls: "p2", svg: `<svg viewBox="0 0 100 100" fill="none"><rect x="30" y="38" width="40" height="50" rx="8" fill="#0d2137" stroke="#C9A84C" stroke-width="1.5"/><circle cx="50" cy="30" r="3" fill="#E8C97A"/></svg>` },
-    { name: "حقيبة جلد طبيعي", price: 5200, cls: "p3", svg: `<svg viewBox="0 0 100 100" fill="none"><rect x="22" y="35" width="56" height="45" rx="8" fill="#6b1a1a" stroke="#C9A84C" stroke-width="1.5"/><path d="M36 35 Q36 24 50 24 Q64 24 64 35" stroke="#C9A84C" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="50" cy="61" r="3" fill="#C9A84C"/></svg>` },
-    { name: "نظارة شمسية برميوم", price: 1900, cls: "p4", svg: `<svg viewBox="0 0 100 100" fill="none"><circle cx="32" cy="50" r="16" fill="#0d1a0d" stroke="#C9A84C" stroke-width="2.5"/><circle cx="68" cy="50" r="16" fill="#0d1a0d" stroke="#C9A84C" stroke-width="2.5"/><line x1="48" y1="50" x2="52" y2="50" stroke="#C9A84C" stroke-width="2"/><line x1="10" y1="50" x2="22" y2="50" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/><line x1="78" y1="50" x2="90" y2="50" stroke="#C9A84C" stroke-width="3" stroke-linecap="round"/></svg>` }
-  ];
+  // ==================== CONFIG ====================
+  const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"; // ← ضع توكن البوت هنا
+  const CHAT_ID   = "672218833";
+  const PRICE     = 2800;
+  // ================================================
 
-  let selectedIndex = 0;
+  // Communes data
+  const communesData = {
+    "الجزائر": ["الجزائر الوسطى","باب الواد","بولوغين","حسين داي","الحراش","برج البحري","القبة","بئر مراد رايس","بن عكنون","المحمدية","الرايس حميدو","بابا حسن","الدويرة","برج الكيفان","الرويبة","رغاية","الشراقة","الدرارية","سيدي موسى","الأرقان","خرايسية","سيدي عبد الله","حمامات الأنف","أولاد فايت","تيجلابين","سيدي يحيى","زرالدة","الساحل","الأبيار","قوبة","عين بنيان","بئر توتة"],
+    "البليدة": ["البليدة","بوفاريك","لرباط","الأربعاء","موزاية","بني تامو","شرشل","أولاد يعيش","شفاعة","قرواو","الشريعة","بن خليل","بوعرفة","مصطفى بن إبراهيم","بني مراد","العفرون","الصومعة","بوينان","أحمد دراية","بن آرو","القليعة","أقبو"],
+    "وهران": ["وهران","عين البيضاء","بطيوة","بئر الجير","السانية","مرسى الحجاج","عرزيو","بوسفر","حاسي بن عقة","طفراوي","مداغ","وادي تليلات","سيدي الشحمي","خرزوز","بوغراشة","الكرمة","عين الكرمة","حمام بوحجر","برحال","حاسي مفسوخ","مسرغين","سيدي مبارك"],
+    "قسنطينة": ["قسنطينة","الخروب","عين عبيد","ديدوش مراد","عين سمارة","حامة بوزيان","إبن زياد","زيغود يوسف","أولاد رحمون","بني حميدان","مسعود بوجريو"],
+    "سطيف": ["سطيف","العلمة","أقجدال","عين أرنات","قجال","بوقاعة","بئر العرش","باتنة","عين لقراح","بني عزيز","أولاد تبان","مزلوق","بابور","عين رويلة"],
+    "عنابة": ["عنابة","الحجار","سرايدي","برحال","الشط","عين الباردة","المنارة","تيسدت"],
+    "باتنة": ["باتنة","مروانة","نقاوس","بريكة","عين توتة","أريس","تكوت","سرج الغول","أولاد سلام","الشمرة","بيطام","حيدوسة","معافة"],
+    "تلمسان": ["تلمسان","مغنية","غزوات","بني صاف","رمشي","سبدو","أولاد ميمون","بني سنوس","سيدي بوجنان","عين يوسف","ندرومة","بني بوسعيد"],
+    "بجاية": ["بجاية","أميزور","الكريفات","خربة","أقبو","سيدي عيش","ببريشن","إيغيل علي","أوقاس","تيشي","أوزلاقن"],
+    "تيزي وزو": ["تيزي وزو","عزازقة","لربعاء ناث إيراثن","بني يني","فريحة","أيت خليلي","أقبيل","معاتقة","أيت أيسي","بوغني","تابودت"],
+    "مستغانم": ["مستغانم","عين تادلس","صيادة","عشعاشة","خضرا","سيدي علي","منصورة","حجاج"],
+    "سكيكدة": ["سكيكدة","عزابة","فلفلة","حمادي كرومة","رمضان جمال","كركرة","بن عزوز"],
+    "الشلف": ["الشلف","تنس","أم الدروع","بوقادير","عين مران","أولاد فارس","بني حواء"],
+    "تبسة": ["تبسة","بئر العاتر","الونزة","النقرين","مرسط","تليجان","بكاريا"],
+    "بسكرة": ["بسكرة","طولقة","أولاد جلال","سيدي عقبة","القنطرة","مشونش","أورلال","زريبة الوادي"],
+    "ورقلة": ["ورقلة","حاسي مسعود","النقوسة","تقرت","سيدي خويلد","رأس المائدة","الرويسات","المنقر"],
+    "المسيلة": ["المسيلة","بوسعادة","مجانة","سيدي عيسى","أولاد دراج","محمد بوضياف","بنهار","بريبة"],
+    "برج بوعريريج": ["برج بوعريريج","رأس الوادي","برج زمورة","تاشتة","حمادة","قصر البخاري"],
+    "المدية": ["المدية","بنيية","البرواقية","كاف لخضر","ثنية الحد","أزيز","شنيفة"],
+    "البويرة": ["البويرة","لقصر","عين بسام","أقبو","سور الغزلان","راس الوادي"],
+    "بومرداس": ["بومرداس","برج منايل","خميس الخشنة","دلس","بودواو","زموري","بلاية"],
+    "تيبازة": ["تيبازة","شرشل","أقبو","حجوط","مراد","بوهارون","خميستي"],
+    "عين الدفلى": ["عين الدفلى","خميس مليانة","عين البنيان","بورحيل","حمام ريغة","المخاطرية"],
+    "عين تموشنت": ["عين تموشنت","بني صاف","حمام بوحجر","أولاد كيحل","شعبة اسحاق"],
+    "تيارت": ["تيارت","فرندة","مهيانة","سوق أهراس","تاخمارت","السوقر"],
+    "معسكر": ["معسكر","السيق","غريس","محمد بن علي","أولاد مامية","بوهني"],
+    "سعيدة": ["سعيدة","عين الحجر","أولاد إبراهيم","تيرسين","دوي ثابت"],
+    "غليزان": ["غليزان","رليزان","جمعة أولاد الشيخ","وادي الرهيو","بلعسل"],
+    "الأغواط": ["الأغواط","آفلو","قصر الحيران","برج خنفيس","سيدي مخلوف"],
+    "الجلفة": ["الجلفة","مسعد","حاسي بحبح","عين وسارة","بيرين","سلمانة"],
+    "غرداية": ["غرداية","بريان","الغرارة","ذهب","القرارة","بونورة","العطف","بني يزقن","مليكة"],
+    "الوادي": ["الوادي","بسباس","الرباح","ورماس","كوينين","المقرن","حساني عبد الكريم"],
+    "النعامة": ["النعامة","المشرية","عسلة","صفيصفة","تيوت","مقرر"],
+    "البيض": ["البيض","بوعلام","العبادلة","الشقيق","سيدي امحمد بن بوزيان"],
+    "إليزي": ["إليزي","عين أمناس","جانت","برج عمر إدريس"],
+    "تندوف": ["تندوف"],
+    "بشار": ["بشار","أبادلة","بني ونيف","القنادسة","تاغيت","كرزاز"],
+    "أدرار": ["أدرار","رقان","تيميمون","تيط","أولاد سعيد","أوقروت","أولف"],
+    "تمنراست": ["تمنراست","عين صالح","عين قزام","إدلس"],
+    "أم البواقي": ["أم البواقي","عين بيضاء","عين مليلة","عين الفكرون","عين الزيتونة"],
+    "خنشلة": ["خنشلة","بغاي","أولاد رشاش","مستورة","الرميلة"],
+    "سوق أهراس": ["سوق أهراس","سدراتة","معلمة","الحنانشة","أم العظائم"],
+    "جيجل": ["جيجل","الميلية","الطاهر","تاهر","إيمي أومروان","الشقفة"],
+    "ميلة": ["ميلة","الشلالة الكبرى","فرجيوة","عين مليلة","أحمد راشدي"],
+    "توقرت": ["توقرت","الطيبات","تماسين","بلدة عمر"],
+    "إن صالح": ["إن صالح","فقارة الزوا"],
+    "إن قزام": ["إن قزام"],
+    "جانت": ["جانت"],
+    "المغير": ["المغير","جامعة","سيدي خليل"],
+    "المنيعة": ["المنيعة","حاسي الفحل","بريانة"],
+    "بني عباس": ["بني عباس","إقلي","ثاورير","بودة"],
+    "عين قزام": ["عين قزام"],
+    "بريكة": ["بريكة","رأس العيون","أولاد فاضل"],
+    "أولاد جلال": ["أولاد جلال","سيدي خالد","الدوسن"],
+    "تيميمون": ["تيميمون","تاليمون","عين سالح","شروين"],
+    "برج باجي مختار": ["برج باجي مختار"],
+    "خميستي": ["خميستي","سيدي سليمان","صوامع"],
+    "تيبيازة": ["تيبازة","حاجوت","شرشل"],
+    "تيسمسيلت": ["تيسمسيلت","ثنية الحد","عازيز","برج بونعامة"],
+  };
+
   let qty = 1;
+  let selectedSize = "L";
 
-  function selectProduct(card, index) {
-    document.querySelectorAll('.product-card').forEach(c => c.classList.remove('selected'));
-    card.classList.add('selected');
-    selectedIndex = index;
-    const p = products[index];
-    document.getElementById('previewName').textContent = p.name;
-    document.getElementById('previewPrice').textContent = p.price.toLocaleString() + ' دج';
-    const icon = document.getElementById('previewIcon');
-    icon.className = 'preview-icon ' + p.cls;
-    icon.innerHTML = p.svg;
-    updateSummary();
+  function switchImg(src, thumb) {
+    document.getElementById('mainImg').src = src;
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
   }
 
-  function changeQty(delta) {
-    qty = Math.max(1, Math.min(10, qty + delta));
-    document.getElementById('qtyDisplay').textContent = qty;
-    updateSummary();
+  function selectSize(btn) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedSize = btn.textContent;
   }
 
-  function updateSummary() {
-    const p = products[selectedIndex];
-    document.getElementById('summaryPrice').textContent = p.price.toLocaleString() + ' دج';
-    document.getElementById('summaryQty').textContent = '× ' + qty;
-    document.getElementById('summaryTotal').textContent = (p.price * qty).toLocaleString() + ' دج';
+  function chQty(d) {
+    qty = Math.max(1, Math.min(10, qty + d));
+    document.getElementById('qtyVal').textContent = qty;
+    document.getElementById('sumQty').textContent = '× ' + qty;
+    document.getElementById('sumTotal').textContent = (PRICE * qty).toLocaleString('ar-DZ') + ' دج';
   }
 
-  function submitOrder() {
-    const name = document.getElementById('nameInput').value.trim();
-    const phone = document.getElementById('phoneInput').value.trim();
-    const state = document.getElementById('stateSelect').value;
-    const address = document.getElementById('addressInput').value.trim();
-    if (!name || !phone || !state || !address) {
-      alert('⚠️ يرجى ملء جميع الحقول المطلوبة');
-      return;
+  function loadCommunes() {
+    const wilaya = document.getElementById('wilaya').value;
+    const sel = document.getElementById('commune');
+    sel.innerHTML = '';
+    if (!wilaya) { sel.innerHTML = '<option value="">اختر الولاية أولاً</option>'; return; }
+    const list = communesData[wilaya] || [wilaya];
+    list.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c; opt.textContent = c;
+      sel.appendChild(opt);
+    });
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  async function submitOrder() {
+    const name    = document.getElementById('name').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const wilaya  = document.getElementById('wilaya').value;
+    const commune = document.getElementById('commune').value;
+    const address = document.getElementById('address').value.trim();
+
+    if (!name)    { showToast('⚠️ أدخل اسمك الكامل'); return; }
+    if (!phone)   { showToast('⚠️ أدخل رقم هاتفك'); return; }
+    if (!wilaya)  { showToast('⚠️ اختر ولايتك'); return; }
+    if (!commune) { showToast('⚠️ اختر بلديتك'); return; }
+    if (!address) { showToast('⚠️ أدخل عنوانك التفصيلي'); return; }
+
+    const btn = document.getElementById('submitBtn');
+    const txt = document.getElementById('btnText');
+    btn.classList.add('loading');
+    txt.textContent = '⏳ جارٍ الإرسال...';
+
+    const msg = `
+🇩🇿 *طلب جديد — قميص الخضر*
+━━━━━━━━━━━━━━
+👤 الاسم: ${name}
+📞 الهاتف: ${phone}
+📍 الولاية: ${wilaya}
+🏘️ البلدية: ${commune}
+🏠 العنوان: ${address}
+👕 المقاس: ${selectedSize}
+🔢 الكمية: ${qty}
+💰 المجموع: ${(PRICE * qty).toLocaleString()} دج
+━━━━━━━━━━━━━━
+🕐 ${new Date().toLocaleString('ar-DZ')}
+    `.trim();
+
+    try {
+      const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: msg, parse_mode: 'Markdown' })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        document.getElementById('modal').classList.add('open');
+      } else {
+        showToast('❌ خطأ في الإرسال، حاول مجدداً');
+      }
+    } catch(e) {
+      showToast('❌ تحقق من اتصالك بالإنترنت');
     }
-    document.getElementById('successModal').classList.add('show');
+
+    btn.classList.remove('loading');
+    txt.textContent = 'تأكيد الطلب الآن';
   }
 
   function closeModal() {
-    document.getElementById('successModal').classList.remove('show');
-    document.getElementById('nameInput').value = '';
-    document.getElementById('phoneInput').value = '';
-    document.getElementById('stateSelect').value = '';
-    document.getElementById('addressInput').value = '';
+    document.getElementById('modal').classList.remove('open');
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('wilaya').value = '';
+    document.getElementById('commune').innerHTML = '<option value="">اختر الولاية أولاً</option>';
+    document.getElementById('address').value = '';
     qty = 1;
-    document.getElementById('qtyDisplay').textContent = '1';
-    updateSummary();
+    document.getElementById('qtyVal').textContent = '1';
+    document.getElementById('sumQty').textContent = '× 1';
+    document.getElementById('sumTotal').textContent = '2,800 دج';
   }
-
-  // Select first product by default
-  document.querySelector('.product-card').classList.add('selected');
 </script>
-
 </body>
 </html>
